@@ -1,0 +1,26 @@
+# Het aantal replica's (kopieën) van de applicatie die moeten draaien
+replicaCount: 10
+
+image:
+  # De naam van de Docker repository waar de image zich bevindt
+  repository: <dockerusername>/node-app
+  # Beleid voor het ophalen van de image: gebruik lokale image als die bestaat, anders download de nieuwste
+  pullPolicy: IfNotPresent
+  # De tag (versie) van de Docker image die moet worden gebruikt
+  tag: "latest"
+
+service:
+  # Het type Kubernetes service dat moet worden gemaakt: interne toegang binnen het cluster
+  type: ClusterIP
+  # De poort waarop de service luistert binnen het cluster
+  port: 3000
+
+# De poort waarop de container binnen de pod draait
+containerPort: 3000
+
+ingress:
+  # Of de Ingress moet worden ingeschakeld voor externe toegang tot de applicatie
+  enabled: false
+
+# Beperkingen voor CPU en geheugen die aan de container worden toegewezen, nu leeg gelaten (geen beperkingen)
+resources: {}
